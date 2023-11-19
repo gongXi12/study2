@@ -82,3 +82,45 @@ LangChian 作为一个大语言模型开发框架，可以将 LLM 模型（对�
 - **记忆（Memory）**：用于链的多次运行之间持久化应用程序状态；
 - **代理（Agents）**：扩展模型的推理能力。用于复杂的应用的调用序列；
 - **回调（Callbacks）**：扩展模型的推理能力。用于复杂的应用的调用序列；
+
+# 第二章 调用大模型API
+
+## 1.基础概念
+
+### 1.1Prompt
+
+Prompt 最初是 NLP（自然语言处理）研究者为下游任务设计出来的一种任务专属的输入模板，类似于一种任务（例如：分类，聚类等）会对应一种 Prompt。在 ChatGPT 推出并获得大量应用之后，Prompt 开始被推广为给大模型的所有输入。即，我们每一次访问大模型的输入为一个 Prompt，而大模型给我们的返回结果则被称为 Completion。
+
+### 1.2Temperature
+
+LLM 生成是具有随机性的，在模型的顶层通过选取不同预测概率的预测结果来生成最后的结果。我们一般可以通过控制 Temperature 参数来控制 LLM 生成结果的随机性与创造性。
+
+Temperature 一般取值在 0~1 之间，当取值较低接近0时，预测的随机性会较低，产生更保守、可预测的文本，不太可能生成意想不到或不寻常的词。当取值较高接近1时，预测的随机性会较高，所有词被选择的可能性更大，会产生更有创意、多样化的文本，更有可能生成不寻常或意想不到的词。
+
+### 1.3System Prompt
+
+System Prompt 是随着 ChatGPT API 开放并逐步得到大量使用的一个新兴概念，事实上，它并不在大模型本身训练中得到体现，而是大模型服务方为提升用户体验所设置的一种策略。
+
+具体来说，在使用 ChatGPT API 时，你可以设置两种 Prompt：一种是 System Prompt，该种 Prompt 内容会在整个会话过程中持久地影响模型的回复，且相比于普通 Prompt 具有更高的重要性；另一种是 User Prompt，这更偏向于咱们平时的 Prompt，即需要模型做出回复的输入。
+
+## 2.调用ChatGPT
+
+将OpenAI的API设置为全局变量后调用出现以下错误
+
+![image-20231119120518290](C:\Users\龚曦\AppData\Roaming\Typora\typora-user-images\image-20231119120518290.png)
+
+## 3.调用百度文心
+
+![image-20231119120144793](C:\Users\龚曦\AppData\Roaming\Typora\typora-user-images\image-20231119120144793.png)
+
+调用成功。
+
+但是在用langchain调用的时候出现了问题，
+
+![image-20231119122717952](C:\Users\龚曦\AppData\Roaming\Typora\typora-user-images\image-20231119122717952.png)
+
+配置没有问题，但就是说api_key出现了问题。
+
+## 4.调用讯飞星火
+
+还未开始，等有时间会补充上去。
